@@ -17,6 +17,13 @@ function showScore() {
    document.getElementById("score").innerText = game.score;
 }
 
+function lightsOn(circ) { //id circ
+    document.getElementById(circ).classList.add("light");
+    setTimeout(() => {
+        document.getElementById(circ).classList.remove("light");
+    }, 400);
+}
+
 function addTurn() {
     game.playerMoves = [];
     game.currentGame.push(game.choices[(Math.floor(Math.random() *4))]);
@@ -30,4 +37,4 @@ of our choices array and then the resulting  choice is pushed onto the current g
     //showTurns();
 }
 
-module.exports = {game, newGame, showScore, addTurn};
+module.exports = {game, newGame, showScore, addTurn, lightsOn};
