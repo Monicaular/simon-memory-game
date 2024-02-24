@@ -35,6 +35,15 @@ describe("game object contains correct keys", () => {
     test("turnNumber key exists", () => {
         expect("turnNumber" in game).toBe(true);
     });
+    test("lastButton key exists", () => {
+        expect("lastButton" in game).toBe(true);
+    });
+    test("turnInProgress key exists", () => {
+        expect("turnInProgress" in game).toBe(true);
+    });
+    test("turnInProgress key value is false", () => {
+        expect("turnInProgress" in game).toBe(true);
+    });
 });
 
 //see if the new game function resets the score
@@ -106,6 +115,16 @@ test ("should add correct class to light up the buttons", () => {
         game.playerMoves.push("wrong");
         playerTurn();
         expect(window.alert).toBeCalledWith("Wrong Move!");
+    });
+    test("should toggle TurnInProgress to true", () => {
+        showTurns();
+        expect(game.turnInProgress).toBe(true);
+    });
+    test("clicking during the computer sequence should fail", () => {
+        showTurns();
+        game.lastButton = "";
+        document.getElementById("button2").click();
+        expect (game.lastButton).toEqual("");
     });
 });
 
